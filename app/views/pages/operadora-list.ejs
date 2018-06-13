@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+        <title>Operadoras</title>
+</head>
+
+<body>
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nome</th>
+                    <th scope="fantasia">Fantasia</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Prefixo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% operadoras.forEach((operadora) => { %>
+                    <tr>
+                        <th scope="row"><%= operadora.ope_codigo %></th>
+                        <td><%= operadora.ope_nome %></td>
+                        <td><%= operadora.ope_fantasia %></td>
+                        <td><%= operadora.ope_cidade %></td>
+                        <td><%= operadora.ope_prefixo %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+    <% include ../partials/scripts %>
+</body>
+
+</html>
