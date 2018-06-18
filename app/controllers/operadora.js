@@ -1,7 +1,7 @@
 const model = require('../models/operadora');
 
 function selecionar(req, res) {
-    model.selecionar(req.query, (err, data) => {
+    model.selecionar((err, data) => {
         if (err)
             res.status(500).json({message: err.message});
         console.log(data);    
@@ -11,6 +11,47 @@ function selecionar(req, res) {
     });
 }
 
+function inserir(req, res) {
+    console.log('body : ',req.body);
+    model.inserir(req.body, (err, data) => {
+        if (err) {
+            res.status(500).json({message: err.message});
+        } else {
+            res.redirect('/operadoras/novo');                
+        }
+        //res.status(200).render('pages/operadora-cadastro');
+    });
+}
+
+function alterar(req, res) {
+    console.log(req.body);
+    model.alterar(req.params.id, req.body, (err) => {
+        if (err) {
+            res.status(500).json({message: err.message});
+        } else {
+            res.redirect('/operadoras');
+        }
+    });
+}
+
+function getForm(req, res) {
+    res.status(200).render('pages/operadora-cadastro');
+}
+
+function deletar(req, res) {
+    model.deletar(req.params.id, (err) => {
+        if (err){
+            res.status(500).json({message: err.message});
+        } else {
+            res.redirect('/operadoras');
+        }
+    });
+}
+
 module.exports = {
-    selecionar
+    selecionar,
+    inserir,
+    getForm,
+    deletar,
+    alterar
 }

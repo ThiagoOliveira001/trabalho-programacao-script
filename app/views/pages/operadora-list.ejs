@@ -4,6 +4,7 @@
 <head>
     <% include ../partials/head %>
         <title>Operadoras</title>
+        <link rel="stylesheet" href="css/operadora.css">
 </head>
 
 <body>
@@ -19,17 +20,38 @@
                     <th scope="fantasia">Fantasia</th>
                     <th scope="col">Cidade</th>
                     <th scope="col">Prefixo</th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <% operadoras.forEach((operadora) => { %>
-                    <tr>
-                        <th scope="row"><%= operadora.ope_codigo %></th>
-                        <td><%= operadora.ope_nome %></td>
-                        <td><%= operadora.ope_fantasia %></td>
-                        <td><%= operadora.ope_cidade %></td>
-                        <td><%= operadora.ope_prefixo %></td>
-                    </tr>
+                    <form method="post" action=<%="/operadoras/editar/" + operadora.ope_codigo %> >
+                        <tr>
+                            <th scope="row">
+                                <%= operadora.ope_codigo %>
+                            </th>
+                            <td>
+                                <input class="edit-input" name="nome" type="text" value=<%= operadora.ope_nome %>>
+                            </td>
+                            <td>
+                                <input class="edit-input" name="fantasia" type="text" value=<%= operadora.ope_fantasia %>>    
+                            </td>
+                            <td>
+                                <input class="edit-input" name="cidade" type="text" value=<%= operadora.ope_cidade %>>
+                            </td>
+                            <td>
+                                <input class="edit-input" name="prefixo" type="text" value=<%= operadora.ope_prefixo %>>
+                            </td>
+                            <td>
+                                <a class="delete" href=<%="/operadoras/deletar/" + operadora.ope_codigo %>>
+                                    <i class="material-icons">delete_forever</i>
+                                </a>
+                                <button class="edit-button" type="submit">
+                                    <i class="material-icons">create</i>
+                                </button>
+                            </td>
+                        </tr>
+                    </form>
                 <% }) %>
             </tbody>
         </table>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+        <title>Telefones</title>
+</head>
+
+<body>
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Cor</th>
+                    <th scope="col">Chips</th>
+                    <th scope="col">Operadora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% telefones.forEach((telefone) => { %>
+                    <tr>
+                        <th scope="row"><%= telefone.tel_codigo %></th>
+                        <td><%= telefone.tel_descricao %></td>
+                        <td><%= telefone.tel_modelo %></td>
+                        <td><%= telefone.tel_cor %></td>
+                        <td><%= telefone.tel_chips %></td>
+                        <td><%= telefone.ope_fantasia %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+    <% include ../partials/scripts %>
+</body>
+
+</html>
