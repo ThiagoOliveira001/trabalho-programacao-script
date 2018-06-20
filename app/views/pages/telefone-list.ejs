@@ -20,19 +20,45 @@
                     <th scope="col">Cor</th>
                     <th scope="col">Chips</th>
                     <th scope="col">Operadora</th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <% telefones.forEach((telefone) => { %>
+                <% for (telefone of telefones) { %>
+                    <form method="POST" action=<%= "/telefones/editar/" + telefone.tel_codigo %>>
                     <tr>
-                        <th scope="row"><%= telefone.tel_codigo %></th>
-                        <td><%= telefone.tel_descricao %></td>
-                        <td><%= telefone.tel_modelo %></td>
-                        <td><%= telefone.tel_cor %></td>
-                        <td><%= telefone.tel_chips %></td>
-                        <td><%= telefone.ope_fantasia %></td>
+                        <th scope="row">
+                            <%= telefone.tel_codigo %>
+                        </th>
+                        <td>
+                            <input type="text" name="descricao" class="edit-input" value=<%= telefone.tel_descricao %>></td>
+                        <td>
+                            <input type="text" name="modelo" class="edit-input" value=<%= telefone.tel_modelo %>></td>
+                        <td>
+                            <input type="text" name="cor" class="edit-input" value=<%= telefone.tel_cor %>></td>
+                        <td>
+                            <input type="text" name="chips"  class="edit-input" value=<%= telefone.tel_chips %>></td>
+                        <td>
+                            <select name="operadora" class="form-control" id="exampleFormControlSelect1">
+                                <option value=<%= telefone.ope_codigo %> selected><%= telefone.ope_fantasia %></option>
+                                <%  for (operadora of operadoras) { %>
+                                    <option value=<%= operadora.ope_codigo %>>
+                                        <%= operadora.ope_fantasia %>
+                                    </option>
+                                <% } %>
+                            </select>
+                        </td>
+                        <td>
+                            <a class="delete" href=<%="/telefones/deletar/" + telefone.tel_codigo %>>
+                                <i class="material-icons">delete_forever</i>
+                            </a>
+                            <button class="edit-button" type="submit">
+                                <i class="material-icons">create</i>
+                            </button>
+                        </td>
                     </tr>
-                <% }) %>
+                    </form>
+                    <%}%>
             </tbody>
         </table>
     </div>

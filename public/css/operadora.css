@@ -16,3 +16,13 @@
 .edit-button:hover {
     color: rgb(19, 19, 179);
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(187, 199, 255);
+    color: white;
+    text-align: center;
+}

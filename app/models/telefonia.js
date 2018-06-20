@@ -20,11 +20,41 @@ function inserir(telefone, cb) {
         (err) => {
             if (err)
                 return cb(err);
-            return cb(null)
+            return cb(null);
+    });
+}
+
+
+function alterar(id,telefone,cb) {
+    mysql.query(`call alterarTelefone(?,?,?,?,?,?)`,
+        [
+            id,
+            telefone.descricao,
+            telefone.modelo,
+            telefone.cor,
+            telefone.chips,
+            telefone.operadora
+        ],
+        (err) => {
+            if (err)
+                return cb(err);
+            return cb(null);
+    });
+} 
+
+function deletar(id, cb) {
+    mysql.query('call deletarTelefone(?)',id ,(err) => {
+        if (err) {
+            return cb(err);
+        } else {
+            return cb(err);
+        }
     });
 }
 
 module.exports = {
     selecionar,
-    inserir
+    inserir,
+    alterar,
+    deletar
 };

@@ -12,7 +12,6 @@ function selecionar(req, res) {
 }
 
 function inserir(req, res) {
-    console.log('body : ',req.body);
     model.inserir(req.body, (err, data) => {
         if (err) {
             res.status(500).json({message: err.message});
@@ -24,7 +23,6 @@ function inserir(req, res) {
 }
 
 function alterar(req, res) {
-    console.log(req.body);
     model.alterar(req.params.id, req.body, (err) => {
         if (err) {
             res.status(500).json({message: err.message});

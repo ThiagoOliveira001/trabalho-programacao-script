@@ -91,3 +91,34 @@ BEGIN
 END $$ 
 
 DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE alterarTelefone(
+IN vtel_codigo INT,
+IN vtel_descricao VARCHAR(30),
+IN vtel_modelo VARCHAR(10),
+IN vtel_cor VARCHAR(10),
+IN vtel_chips INT,
+IN vope_codigo INT )
+BEGIN
+	UPDATE TELEFONE
+		SET tel_descricao = vtel_descricao,
+			tel_modelo = vtel_modelo,
+            tel_cor = vtel_cor,
+            tel_chips = vtel_chips,
+            ope_codigo = vope_codigo
+		WHERE tel_codigo = vtel_codigo;
+END $$ 
+
+DELIMITER ;
+
+DELIMITER $$
+	
+CREATE PROCEDURE deletarTelefone(IN vtel_codigo INT)
+BEGIN
+	DELETE FROM TELEFONE
+    WHERE tel_codigo = vtel_codigo;
+END $$    
+    
+DELIMITER ;
