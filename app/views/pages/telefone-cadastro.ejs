@@ -4,14 +4,16 @@
 <head>
     <% include ../partials/head %>
         <title>Home</title>
+    <link rel="stylesheet" href="css/operadora.css">
 </head>
 
 <body>
     <header>
         <% include ../partials/header %>
     </header>
-    <div>
+    <div style="width: 90%;margin-left: 5%" >
         <form action="/telefones/novo" method="post">
+            <legend>Cadastrar Telefone</legend>
             <div class="form-group">
                 <label for="descricao">Descricao</label>
                 <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descricao">
@@ -43,7 +45,7 @@
             </div>
             <div>
                 <button type="submit" class="btn btn-primary" value="submit">
-                    <i class="material-icons">save</i>
+                    <i class="material-icons">save</i>SALVAR
                 </button>
             </div>
         </form>
