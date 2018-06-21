@@ -24,7 +24,7 @@ INSERT INTO OPERADORA(ope_nome,ope_fantasia,ope_prefixo,ope_cidade)
 INSERT INTO TELEFONE(tel_descricao,tel_modelo,tel_cor,tel_chips,ope_codigo)
 	VALUES('Smartphone/LG','K10','Preto',1,1),
     ('Smartphone/Samsung','J5 Prime','Branco',2,2),
-    ('Smartphone/Samgung','Galaxy S7','Dourado',1,3)
+    ('Smartphone/Samgung','Galaxy S7','Dourado',1,3);
 
 DELIMITER $$
 
@@ -122,3 +122,24 @@ BEGIN
 END $$    
     
 DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE PROCEDURE alterarOperadora(
+	IN vope_codigo INT,
+    IN vope_nome VARCHAR(20), 
+	IN vope_fantasia VARCHAR(10), 
+	IN vope_prefixo INT, 
+	IN vope_cidade VARCHAR(20)
+)
+BEGIN 
+	UPDATE OPERADORA
+		SET ope_nome = vope_nome,
+			ope_fantasia = vope_fantasia,
+            ope_prefixo = vope_prefixo,
+            ope_cidade = vope_cidade
+    WHERE ope_codigo = vope_codigo;
+END $$
+
+DELIMITER $$
